@@ -25,7 +25,8 @@ const findLatitudeAndLongitude = (query) => {
       console.log('success in findLatitudeAndLongitude!', latitude, longitude);
     })
     .catch( (error) => {
-      console.log('error in findLatitudeAndLongitude!', error);
+      console.log('error in findLatitudeAndLongitude!');
+      // console.log(error); // If we want to see more info about the issue
     });
 
   return {
@@ -63,9 +64,25 @@ console.log(locations);
 // Refactoring: Utilize `then` //
 /////////////////////////////////
 
+// const getLocationFromQuery = (query) => {
+//   // Make the first API call to get latitude and longitude
+//   findLatitudeAndLongitude(query)
+//     .then((response) => {
+//       // `response` is the data returned from the findLatitudeAndLongitude promise
+//       // Make the next API call here, where we can use the `response` data from the previous call
+//       findLocation(response.latitude, response.longitude);
+//     })
+//     .catch((error) => {
+//       console.log('getLocationFromQuery: error fetching location from query!');
+//       // console.log(error); // If we want to see more info about the issue
+//     });
+// };
+
 // const findLatitudeAndLongitude = (query) => {
 //   let latitude, longitude;
-//   axios.get('https://us1.locationiq.com/v1/search.php',
+
+//   // Return the promise chain created by the axios call
+//   return axios.get('https://us1.locationiq.com/v1/search.php',
 //     {
 //       params: {
 //         key: LOCATIONIQ_KEY,
@@ -73,16 +90,16 @@ console.log(locations);
 //         format: 'json'
 //       }
 //     })
-//     .then( (response) => {
+//     .then((response) => {
 //       latitude = response.data[0].lat;
 //       longitude = response.data[0].lon;
 //       console.log('success in findLatitudeAndLongitude!', latitude, longitude);
 
-//       // make the next API call here!
-//       findLocation(latitude, longitude);
+//       return {latitude, longitude}; // Return the data we want to pass on
 //     })
-//     .catch( (error) => {
-//       console.log('error in findLatitudeAndLongitude!', error);
+//     .catch((error) => {
+//       console.log('error in findLatitudeAndLongitude!');
+//       // console.log(error); // If we want to see more info about the issue
 //     });
 // };
 
@@ -96,13 +113,13 @@ console.log(locations);
 //         lon: longitude
 //       }
 //     })
-//     .then( (response) => {
+//     .then((response) => {
 //       console.log('success in findLocation!', response.data);
 //     })
-//     .catch( (error) => {
+//     .catch((error) => {
 //       console.log('error in findLocation!', error);
 //       // console.log(error); // If we want to see more info about the issue
 //     });
 // };
 
-// findLatitudeAndLongitude('Seattle, Washington, USA');
+// getLocationFromQuery('Seattle, Washington, USA');
