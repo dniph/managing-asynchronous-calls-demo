@@ -69,6 +69,7 @@ console.log(locations);
 //   findLatitudeAndLongitude(query)
 //     .then((response) => {
 //       // `response` is the data returned from the findLatitudeAndLongitude promise
+//
 //       // Make the next API call here, where we can use the `response` data from the previous call
 //       findLocation(response.latitude, response.longitude);
 //     })
